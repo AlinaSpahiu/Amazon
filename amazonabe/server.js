@@ -5,8 +5,9 @@ const mongoose = require("mongoose")
 const bodyParser = require("body-parser")
 const userRoute = require("./src/routes/userRoutes")
 const productRoute = require("./src/routes/productRoute")
+const config = require("./config")
 dotenv.config();
-
+const cors = require("cors")
 
 
 mongoose.connect(MONGODB_URL =  process.env.MONGODB_URL || 'mongodb://localhost/amazona',  {
@@ -16,14 +17,14 @@ mongoose.connect(MONGODB_URL =  process.env.MONGODB_URL || 'mongodb://localhost/
 }).catch(error => console.log(error.reason))
 
 const server = express();
+server.use(cors())
 
 server.use(bodyParser.json())
 
 server.use("/api/users/", userRoute)
-server.use("/api/products/", productRoute)
-// server.get("/api/products", (req, res) => {
-//     res.send(data.products);
-// });
+server.use("/api/products", productRoute)
+server.get("/api/products", productRoute)
+
 
 
 
@@ -36,4 +37,4 @@ server.use("/api/products/", productRoute)
 // });
 
 
-server.listen(5000, () =>{ console.log("Server started at: http://localhost:5000")})
+server.listen(config.PORT, () =>{ console.log("Server started at: http://localhost:3001")})
