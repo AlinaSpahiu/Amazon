@@ -1,6 +1,6 @@
 const express = require("express");
 const UserModel  = require ("../model/userModel.js");
-const { getToken } = require("../util.js");
+const { getToken } = require("../util");
 
 const route = express.Router();
 
