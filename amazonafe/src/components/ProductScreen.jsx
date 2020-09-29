@@ -7,7 +7,6 @@ import { detailsProduct } from "../actions/productActions"
 function ProductScreen(props) {
     const [qty, setQty] = useState(1)
     const userSignin = useSelector((state) => state.userSignin);
-    const { userInfo } = userSignin;
     const productDetails = useSelector(state => state.productDetails);
     const { product, loading, error } = productDetails;
     const dispatch = useDispatch();
