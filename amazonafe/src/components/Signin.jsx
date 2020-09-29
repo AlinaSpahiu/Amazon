@@ -10,12 +10,14 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState('');
 const userSignin = useSelector(state =>state.userSignin)
 const {loading, userInfo, error} = userSignin
+ const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
+
 const dispatch = useDispatch();
 
 
  useEffect(() => {
      if(userInfo){
-         props.history.push("/")
+         props.history.push(redirect)
      }
         
     return () => { }
@@ -47,7 +49,7 @@ const submitHandler = (e) =>{
                    </li>
                    <li> <button type="submit" className="button primary">Signin</button> </li>
                    <li> New to amazona?</li>
-                   <li> <Link to="/register" className="button text-center secondary"> Create your amazona account </Link> </li>
+                   <li> <Link to={redirect === "/" ? "register" :"register?redirect=" + redirect} className="button text-center secondary"> Create your amazona account </Link> </li>
                 </ul>
             </form>
         </div>
