@@ -45,6 +45,7 @@ function productSaveReducer(state={product:{}}, action){
     }
 }
 
+// Product Delete Reducer
 function productDeleteReducer(state={product:{}}, action){
     switch (action.type){
     case PRODUCT_DELETE_REQUEST   :
