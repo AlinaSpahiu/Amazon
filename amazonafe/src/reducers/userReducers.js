@@ -14,7 +14,7 @@ function userSigninReducer (state={}, action){
     }
 }
 
-
+// user Register Reducer
 function userRegisterReducer (state={}, action){
     switch(action.type){
         case USER_REGISTER_REQUEST:
